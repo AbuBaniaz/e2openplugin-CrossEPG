@@ -1,9 +1,9 @@
 #ifndef _CRC32_H_
 #define _CRC32_H_
 
-static inline uint32_t crc32 (unsigned char *value, unsigned short length)
+static inline time_t crc32 (unsigned char *value, unsigned short length)
 {
-	const uint32_t crc32_table[256] = {
+	const time_t crc32_table[256] = {
 		0, 0x4C11DB7, 0x9823B6E, 0xD4326D9,
 		0x130476DC, 0x17C56B6B, 0x1A864DB2, 0x1E475005,
 		0x2608EDB8, 0x22C9F00F, 0x2F8AD6D6, 0x2B4BCB61,
@@ -68,9 +68,9 @@ static inline uint32_t crc32 (unsigned char *value, unsigned short length)
 		0x9ABC8BD5, 0x9E7D9662, 0x933EB0BB, 0x97FFAD0C,
 		0xAFB010B1, 0xAB710D06, 0xA6322BDF, 0xA2F33668,
 		0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4};
-		
-	uint32_t crc = 0;
-	
+
+	time_t crc = 0;
+
 	int i;
 
 	for (i=0; i<length; i++)

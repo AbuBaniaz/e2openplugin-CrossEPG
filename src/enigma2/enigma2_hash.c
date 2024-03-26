@@ -20,7 +20,7 @@ void enigma2_hash_init ()
 		hashes[i] = NULL;
 }
 
-bool enigma2_hash_add (uint32_t hash, unsigned char *data, unsigned char size)
+bool enigma2_hash_add (time_t hash, unsigned char *data, unsigned char size)
 {
 	enigma2_hash_t *new = _malloc (sizeof (enigma2_hash_t));
 	new->hash = hash;
@@ -29,7 +29,7 @@ bool enigma2_hash_add (uint32_t hash, unsigned char *data, unsigned char size)
 	new->use_count = 1;
 	new->prev = NULL;
 	new->next = NULL;
-	
+
 	if (hashes[hash & 0xffff] == NULL) hashes[hash & 0xffff] = new;
 	else
 	{
@@ -45,11 +45,11 @@ bool enigma2_hash_add (uint32_t hash, unsigned char *data, unsigned char size)
 			if (tmp->next == NULL) break;
 			tmp = tmp->next;
 		}
-		
+
 		new->prev = tmp;
 		tmp->next = new;
 	}
-	
+
 	return true;
 }
 
@@ -83,7 +83,7 @@ int enigma2_hash_count ()
 			hash = hash->next;
 		}
 	}
-	
+
 	return count;
 }
 
@@ -96,7 +96,7 @@ enigma2_hash_t *enigma2_hash_get_last (unsigned short int prefix)
 		if (hash->next == NULL) break;
 		hash = hash->next;
 	}
-	
+
 	return hash;
 }
 
@@ -125,7 +125,7 @@ void enigma2_hash_sort ()
 					int use_count = last->use_count;
 					unsigned char *tmp_data = last->data;
 					unsigned char tmp_size = last->size;
-					uint32_t tmp_hash = last->hash;
+					time_t tmp_hash = last->hash;
 					last->use_count = last->prev->use_count;
 					last->data = last->prev->data;
 					last->size = last->prev->size;

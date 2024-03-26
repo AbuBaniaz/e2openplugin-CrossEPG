@@ -20,10 +20,10 @@ typedef struct epgdb_title_s
 	uint16_t	length;
 	uint8_t		genre_id;
 	uint8_t		flags;
-	uint32_t	description_crc;
-	uint32_t	description_seek;
-	uint32_t	long_description_crc;
-	uint32_t	long_description_seek;
+	time_t	description_crc;
+	time_t	description_seek;
+	time_t	long_description_crc;
+	time_t	long_description_seek;
 	uint16_t	description_length;
 	uint16_t	long_description_length;
 	uint8_t		iso_639_1;
@@ -40,8 +40,8 @@ typedef struct epgdb_title_s
 typedef struct epgdb_index_s
 {
 	/* same element of epgdb_index_header_t */
-	uint32_t	crc;
-	uint32_t	seek;
+	time_t	crc;
+	time_t	seek;
 	uint16_t	length;
 
 	/* other elements */
@@ -70,7 +70,7 @@ typedef struct epgdb_channel_s
 	struct epgdb_title_s 	*title_first;
 	struct epgdb_title_s 	*title_last;
 	//struct epgdb_title_s 	*title_index;
-	
+
 	epgdb_alias_t			*aliases;
 	unsigned char			aliases_count;
 } epgdb_channel_t;

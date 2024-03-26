@@ -10,10 +10,10 @@ void epgdb_index_empties_set_last (epgdb_index_t *index);
 void epgdb_index_empties_add (epgdb_index_t *index);
 void epgdb_index_init ();
 void epgdb_index_clean ();
-epgdb_index_t *epgdb_index_get_by_crc_length (uint32_t crc, unsigned short int length);
-epgdb_index_t *epgdb_index_add (uint32_t crc, unsigned short int length, bool *added);
+epgdb_index_t *epgdb_index_get_by_crc_length (time_t crc, unsigned short int length);
+epgdb_index_t *epgdb_index_add (time_t crc, unsigned short int length, bool *added);
 void epgdb_index_mark_all_as_unused ();
-void epgdb_index_mark_as_used (uint32_t crc, unsigned short int length);
+void epgdb_index_mark_as_used (time_t crc, unsigned short int length);
 void epgdb_index_empty_unused ();
 
 #endif // _EPGDB_INDEX_H_

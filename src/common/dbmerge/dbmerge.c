@@ -38,10 +38,10 @@ typedef struct epgdb_title_header_s
 	uint16_t	length;
 	uint8_t		genre_id;
 	uint8_t		flags;
-	uint32_t	description_crc;
-	uint32_t	description_seek;
-	uint32_t	long_description_crc;
-	uint32_t	long_description_seek;
+	time_t	description_crc;
+	time_t	description_seek;
+	time_t	long_description_crc;
+	time_t	long_description_seek;
 	uint16_t	description_length;
 	uint16_t	long_description_length;
 	uint8_t		iso_639_1;
@@ -310,7 +310,7 @@ bool dbmerge_fromfile (char *hashes_filename, char *descriptors_filename, void(*
 {
 	FILE *fd_h, *fd_d;
 	bool ret = false;
-	
+
 	fd_h = fopen (hashes_filename, "r");
 	if (fd_h == NULL)
 	{
