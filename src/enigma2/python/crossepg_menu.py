@@ -76,9 +76,10 @@ class CrossEPG_Menu(Screen):
 		# l.append(self.buildListEntry(_("Update xepgdb providers"), "xepgdb.png"))
 		l.append(self.buildListEntry(_("Download now"), "download.png"))
 		l.append(self.buildListEntry(_("Defragment database"), "conversion.png"))
-		if getImageDistro() not in ("openvix", ):
+		if getImageDistro() not in ("openvix", "openbh"):
 			l.append(self.buildListEntry(_("Force csv import now"), "csv.png"))
 			l.append(self.buildListEntry(_("Force epg.dat conversion now"), "conversion.png"))
+		if getImageDistro() not in ("openvix"):
 			l.append(self.buildListEntry(_("Force epg reload"), "reload.png"))
 		l.append(self.buildListEntry(_("Info about database"), "dbinfo.png"))
 		l.append(self.buildListEntry(_("About"), "about.png"))
@@ -149,6 +150,8 @@ class CrossEPG_Menu(Screen):
 		if index == 7:
 			self.session.open(CrossEPG_Defragmenter)
 			return
+		if getImageDistro() == "openbh":
+			index += 2
 		if getImageDistro() == "openvix":
 			index += 3
 		if index == 8:
